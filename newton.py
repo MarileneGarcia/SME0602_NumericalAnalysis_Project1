@@ -36,7 +36,7 @@ def main():
 
     #print( newton(f1,45,0.000001) )
     
-    print( newton(f2,854242,0.000001) )
+    print( newton(f2,4575,0.000001) )
 
 
 if __name__ == "__main__":
