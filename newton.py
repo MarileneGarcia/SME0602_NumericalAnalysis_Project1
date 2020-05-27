@@ -1,7 +1,5 @@
 #   Calculo Numerico (SME0602) - Projeto Pratico 1 - Metodo de Newton
 #   Alunos: Leandro Silva, Marianna Karenina, Marilene Garcia
-#
-#   Para rodar (no terminal linux): python newton.py
 
 import math
 import numpy as np
@@ -22,23 +20,7 @@ def newton( f, x0, e ):
 
     return x
 
-def f1( x ):
-    return math.cos(x)
-
-def f2( x ):
-    return x/2 - 2
-
 def f_der( f, x ):
     h = 1e-5
     return (f(x+h)-f(x-h))/(2*h)
-
-def main(): 
-
-    #print( newton(f1,45,0.000001) )
-    
-    print( newton(f2,4575,0.000001) )
-
-
-if __name__ == "__main__":
-    main()
 
