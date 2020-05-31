@@ -15,9 +15,9 @@ import ordem_convergencia as oc
 import math
 
 precisao_absoluta = 1e-16
-f1_rcorreto = 0.739085133215  # do metodo de halley
-f2_rcorreto = 3               # do calculo teorico
-f3_rcorreto = -1.29269571937  # do resultado de todos os metodos
+f1_rcorreto = 0.739085133215  # raiz unica
+f2_rcorreto = 3               # raiz unica
+f3_rcorreto = 0               # infinitas raizes: (0, -1.2927, -4.7213, -7.8536 ...)
 
 def main():
     # Salvar os resultados em um txt
@@ -56,7 +56,7 @@ def resultados_bisseccao( ):
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = bisseccao.bisseccao(f2, 1.0, 5.0, precisao_absoluta)
+    resultados = bisseccao.bisseccao(f2, 1.0, 25.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
 
@@ -76,7 +76,7 @@ def resultados_secante( ):
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = secante.secante(f2, 1.0, 5.0, precisao_absoluta)
+    resultados = secante.secante(f2, 1.0, 25.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
     
@@ -105,6 +105,7 @@ def resultados_newton( ):
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 
+    
 
 def resultados_halley( ):
     f = open("resultados", "a")
