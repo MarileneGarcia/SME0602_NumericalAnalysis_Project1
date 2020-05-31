@@ -6,7 +6,8 @@ import numpy as np
 
 def bisseccao( f, a, b, e ):
     x = []
-    while (b - a)/2 > e:
+
+    while abs(b-a)/2 > e:
         xi = (a + b)/2
         x.append(xi)
 

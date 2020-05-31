@@ -11,11 +11,20 @@ import bisseccao
 import secante
 import newton
 import halley
+import ordem_convergencia as oc
 import math
 
+precisao_absoluta = 1e-16
+f1_rcorreto = 0.739085133215  # do metodo de halley
+f2_rcorreto = 3               # do calculo teorico
+f3_rcorreto = -1.29269571937  # do resultado de todos os metodos
 
 def main():
     # Salvar os resultados em um txt
+    f = open("resultados", "w+")
+    f.write("RESULTADO DE IMPLEMENTAÇÕES\n- Cálculo Numérico (SME0602) \n- Projeto Prático 1 \n- Alunos: Leandro Silva, Marianna Karenina, Marilene Garcia \n\n")
+    f.close()
+
     resultados_bisseccao( )
     resultados_secante( ) 
     resultados_newton( )
@@ -36,114 +45,96 @@ def f3( x ):
 
 
 def resultados_bisseccao( ):
-    f = open("resultados", "w+")
-    f.write("Resultados Bissecção: \n\n")
+    f = open("resultados", "a")
+    f.write("******** Bissecção ******** \n\n")
+    f.close()
+
     resultados = []
-    precisao_absoluta = 1e-16
 
     # Resultados do metodo da bisseccao
-    f.write("Primeira Função: \n")
     resultados = bisseccao.bisseccao(f1, 0.0, math.pi, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
+    converg = oc.ordem_convergencia(resultados, f1_rcorreto)
+    print_resultados(1, resultados, converg)
 
-    f.write("Segunda Função: \n")
     resultados = bisseccao.bisseccao(f2, 1.0, 5.0, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-    
-    f.write("Terceira Função: \n")
-    resultados = bisseccao.bisseccao(f3, -2.0, 2.0, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
+    converg = oc.ordem_convergencia(resultados, f2_rcorreto)
+    print_resultados(2, resultados, converg)
 
-    f.close
+    resultados = bisseccao.bisseccao(f3, -0.5, 5.0, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f3_rcorreto)
+    print_resultados(3, resultados, converg)
 
 def resultados_secante( ):
     f = open("resultados", "a")
-    f.write("\nResultados Secante: \n\n")
+    f.write("\n******** Secante ********\n\n")
+    f.close()
+
     resultados = []
-    precisao_absoluta = 1e-16
 
     # Resultados do metodo da secante
-    f.write("Primeira Função: \n")
     resultados = secante.secante(f1, 0.0, math.pi, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
+    converg = oc.ordem_convergencia(resultados, f1_rcorreto)
+    print_resultados(1, resultados, converg)
 
-    f.write("Segunda Função: \n")
     resultados = secante.secante(f2, 1.0, 5.0, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
+    converg = oc.ordem_convergencia(resultados, f2_rcorreto)
+    print_resultados(2, resultados, converg)
     
-    f.write("Terceira Função: \n")
-    resultados = secante.secante(f3, -2, 2, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
+    resultados = secante.secante(f3, -0.5, 5.0, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f3_rcorreto)
+    print_resultados(3, resultados, converg)
 
-    f.close()
 
 def resultados_newton( ):
     f = open("resultados", "a")
-    f.write("\nResultados Newton: \n\n")
-    resultados = []
-    precisao_absoluta = 1e-16
-
-    # Resultados do metodo da secante
-    f.write("Primeira Função: \n")
-    resultados = newton.newton(f1, math.pi, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-
-    f.write("Segunda Função: \n")
-    resultados = newton.newton(f2, 1.0, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-    
-    f.write("Terceira Função: \n")
-    resultados = newton.newton(f3, -2, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-
+    f.write("\n******** Newton ********\n\n")
     f.close()
+
+    resultados = []
+
+    # Resultados do metodo de newton
+    resultados = newton.newton(f1, math.pi, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f1_rcorreto)
+    print_resultados(1, resultados, converg)
+
+    resultados = newton.newton(f2, 1.0, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f2_rcorreto)
+    print_resultados(2, resultados, converg)
+
+    resultados = newton.newton(f3, -0.5, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f3_rcorreto)
+    print_resultados(3, resultados, converg)
+
 
 def resultados_halley( ):
     f = open("resultados", "a")
-    f.write("\nResultados Halley: \n\n")
-    resultados = []
-    precisao_absoluta = 1e-16
-
-    # Resultados do metodo da secante
-    f.write("Primeira Função: \n")
-    resultados = halley.halley(f1, math.pi, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-
-    f.write("Segunda Função: \n")
-    resultados = halley.halley(f2, 1.0, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-    
-    f.write("Terceira Função: \n")
-    resultados = halley.halley(f3, -2, precisao_absoluta)
-    f.write(str(resultados) + "\n")
-    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
-    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n\n")
-
+    f.write("\n******** Halley ********\n\n")
     f.close()
 
+    resultados = []
 
+    # Resultados do metodo de halley
+    resultados = halley.halley(f1, math.pi, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f1_rcorreto)
+    print_resultados(1, resultados, converg)
+
+    resultados = halley.halley(f2, 1.0, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f2_rcorreto)
+    print_resultados(2, resultados, converg)
+
+    resultados = halley.halley(f3, -0.5, precisao_absoluta)
+    converg = oc.ordem_convergencia(resultados, f3_rcorreto)
+    print_resultados(3, resultados, converg)
+
+def print_resultados(index, resultados, converg):
+    f = open("resultados", "a")
+    f.write("Função " + str(index) + "\n")
+    f.write(str(resultados) + "\n")
+    f.write("Aprox. Inicial: " + str(resultados[0]) + "\n")
+    f.write("Iterações: " + str(len(resultados)) + "\n") 
+    f.write("Aprox. Final: " + str(resultados[len(resultados) - 1]) + "\n")
+    f.write("Ordem de convergência: " + str(converg) + "\n\n")
+    f.close()
 
 if __name__ == "__main__":
     main()
