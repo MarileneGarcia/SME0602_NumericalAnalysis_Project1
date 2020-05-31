@@ -72,15 +72,15 @@ def resultados_secante( ):
     resultados = []
 
     # Resultados do metodo da secante
-    resultados = secante.secante(f1, 0.0, math.pi, precisao_absoluta)
+    resultados = secante.secante(f1, 22.0, 6.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = secante.secante(f2, 0.0, 15.0, precisao_absoluta)
+    resultados = secante.secante(f2, 9.0, 11.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
     
-    resultados = secante.secante(f3, -0.5, 2.5, precisao_absoluta)
+    resultados = secante.secante(f3, 1.75, 2.15, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 
