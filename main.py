@@ -56,11 +56,11 @@ def resultados_bisseccao( ):
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = bisseccao.bisseccao(f2, 1.0, 25.0, precisao_absoluta)
+    resultados = bisseccao.bisseccao(f2, 0.0, 15.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
 
-    resultados = bisseccao.bisseccao(f3, -0.5, 5.0, precisao_absoluta)
+    resultados = bisseccao.bisseccao(f3, -0.5, 2.5, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 
@@ -76,11 +76,11 @@ def resultados_secante( ):
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = secante.secante(f2, 1.0, 25.0, precisao_absoluta)
+    resultados = secante.secante(f2, 0.0, 15.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
     
-    resultados = secante.secante(f3, -0.5, 5.0, precisao_absoluta)
+    resultados = secante.secante(f3, -0.5, 2.5, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 
@@ -93,15 +93,15 @@ def resultados_newton( ):
     resultados = []
 
     # Resultados do metodo de newton
-    resultados = newton.newton(f1, math.pi, precisao_absoluta)
+    resultados = newton.newton(f1, math.pi/2, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = newton.newton(f2, 1.0, precisao_absoluta)
+    resultados = newton.newton(f2, 7.5, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
 
-    resultados = newton.newton(f3, -0.5, precisao_absoluta)
+    resultados = newton.newton(f3, 1.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 
@@ -115,15 +115,15 @@ def resultados_halley( ):
     resultados = []
 
     # Resultados do metodo de halley
-    resultados = halley.halley(f1, math.pi, precisao_absoluta)
+    resultados = halley.halley(f1, math.pi/2, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f1_rcorreto)
     print_resultados(1, resultados, converg)
 
-    resultados = halley.halley(f2, 1.0, precisao_absoluta)
+    resultados = halley.halley(f2, 7.5, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f2_rcorreto)
     print_resultados(2, resultados, converg)
 
-    resultados = halley.halley(f3, -0.5, precisao_absoluta)
+    resultados = halley.halley(f3, 1.0, precisao_absoluta)
     converg = oc.ordem_convergencia(resultados, f3_rcorreto)
     print_resultados(3, resultados, converg)
 

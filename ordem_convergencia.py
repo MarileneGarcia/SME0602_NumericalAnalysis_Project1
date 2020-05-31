@@ -11,9 +11,7 @@ def ordem_convergencia( x, x_right ):
 
     for i in range(0, tam):
         e.append( abs(x[i] - x_right) )
-    
-    #print(e)
-    
+
     for j in range(1, tam-1):
         n = math.log( (e[j+1]/e[j]) ,10)
         d = math.log( (e[j]/e[j-1]) ,10)
