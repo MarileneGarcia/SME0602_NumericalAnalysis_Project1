@@ -18,8 +18,8 @@ def ordem_convergencia( x, x_right ):
         if(d != 0):
             p =  n / d
 
-    c = e[tam-1] / pow(e[tam-2],p)
+    #c = e[tam-1] / pow(e[tam-2],p)
 
-    return c
+    return p
         
 
